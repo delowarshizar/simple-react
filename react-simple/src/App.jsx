@@ -3,10 +3,16 @@ import State from "./State";
 import Bowler from "./Bowler";
 import Posts from "./Posts";
 import { Suspense } from "react";
+import Users from "./Users";
 
 const handelPost = async () => {
   const loadPost = await fetch("https://jsonplaceholder.typicode.com/posts");
   return loadPost.json();
+};
+
+const handleUser = async () => {
+  const fetchUsers = await fetch("https://jsonplaceholder.typicode.com/users");
+  return fetchUsers.json();
 };
 
 function App() {
@@ -20,13 +26,16 @@ function App() {
   }
 
   const postData = handelPost();
+  const userData = handleUser();
 
   return (
     <>
       <Suspense fallback={<p>Posts are loading ....</p>}>
         <Posts postData={postData}></Posts>
       </Suspense>
-
+      <Suspense fallback={<p>Users data loading ....</p>}>
+        <Users userData={userData}></Users>
+      </Suspense>
       <Bowler name="Malinga" />
       <Bowler name="Bumrah" />
       <h1>Delowar Husain</h1>
