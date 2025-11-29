@@ -10,9 +10,9 @@ function App() {
   const countryData = loadCountry();
   return (
     <>
-     <Suspense fallback={<p>Country data loading...</p>}>
-      <Countries countryData={countryData}></Countries>
-     </Suspense>
+      <Suspense fallback={<p>Country data loading...</p>}>
+        <Countries countryData={countryData}></Countries>
+      </Suspense>
     </>
   );
 }
